@@ -235,15 +235,16 @@ if prompt := st.chat_input("Ask about your files..."):
     with st.chat_message("assistant"):
         doc_context = st.session_state.file_context[:15000]
         system_instructions = (
-            "You are an intelligent assistant. Your task is to analyze the uploaded documents, "
-            "extract information, summarize, evaluate performance, provide suggestions, and give guidance "
-            "when asked. Follow these rules exactly:\n"
-            "1. Answer based on the document content and provide guidance if the user asks.\n"
-            "2. You may summarize or infer insights to help the user, do not output 'No information available in the document related to your question' unless no info exists.\n"
-            "3. Do NOT include internal tags like <think> or explanations of your reasoning.\n"
-            "4. Keep the answers concise, clear, and helpful.\n"
-            f"\nDOCUMENT CONTEXT:\n{doc_context}"
-        )
+    "You are an intelligent assistant. Your task is to analyze the uploaded documents, "
+    "extract information, summarize, evaluate performance, provide suggestions, and give guidance "
+    "when asked. Follow these rules exactly:\n"
+    "1. Answer based on the document content and provide guidance if the user asks.\n"
+    "2. You may summarize or infer insights to help the user, do not output 'No information available in the document related to your question' unless no info exists.\n"
+    "3. Do NOT include internal tags like <think> or explanations of your reasoning.\n"
+    "4. Keep the answers concise, clear, and helpful.\n"
+    f"\nDOCUMENT CONTEXT:\n{doc_context}"
+)
+
 
         groq_messages = [
             {"role": "system", "content": system_instructions},
